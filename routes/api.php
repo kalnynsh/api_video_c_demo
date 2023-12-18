@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Info\InfoController;
+use App\Http\Controllers\Category\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 */
 Route::get(
-        '/info',
+        '/api/v1/categories',
         [
-            InfoController::class,
+            CategoryController::class,
             'index'
         ]
     );

@@ -102,6 +102,9 @@ api-test-functional:
 api-test-functional-coverage:
 	docker-compose run --rm api-php-cli composer test-coverage -- --testsuite=functional
 
+api-routes:
+    docker-compose run --rm api-php-cli php artisan "route:list"
+
 build: build-frontend build-api
 
 build-frontend:
