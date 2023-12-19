@@ -25,3 +25,11 @@ Route::get(
             'index'
         ]
     );
+
+Route::get(
+    '/api/v1/categories/{category}',
+    [
+        CategoryController::class,
+        'show'
+    ]
+);
