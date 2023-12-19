@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Channel\ChannelController;
 use App\Http\Controllers\Category\CategoryController;
 
 /*
@@ -18,18 +20,35 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
-Route::get(
-        '/api/v1/categories',
-        [
-            CategoryController::class,
-            'index'
-        ]
-    );
 
-Route::get(
-    '/api/v1/categories/{category}',
-    [
-        CategoryController::class,
-        'show'
-    ]
-);
+Route::middleware(['api'])
+    ->prefix('/api/v1')
+    ->group(function () {
+        Route::get('/categories',
+            [
+                CategoryController::class,
+                'index',
+            ]
+        );
+
+        Route::get('/categories/{category}',
+            [
+                CategoryController::class,
+                'show',
+            ]
+        );
+
+        Route::get('/channels',
+            [
+                ChannelController::class,
+                'index',
+            ]
+        );
+
+        Route::get('/channels/{channel}',
+            [
+                ChannelController::class,
+                'show',
+            ]
+        );
+    });
