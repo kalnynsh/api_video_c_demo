@@ -10,13 +10,13 @@ class ChannelController extends Controller
 {
     public function index(Request $request)
     {
-        $content = Channel::get();
+        $content = Channel::with('videos')->get();
 
         return response($content, 200);
     }
 
     public function show(Channel $channel)
     {
-        return response($channel, 200);
+        return response($channel->load('videos'), 200);
     }
 }

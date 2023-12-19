@@ -10,13 +10,13 @@ class VideoController extends Controller
 {
     public function index(Request $request)
     {
-        $content = Video::get();
+        $content = Video::with('channel')->get();
 
         return response($content, 200);
     }
 
     public function show(Video $video)
     {
-        return response($video, 200);
+        return response($video->load('channel'), 200);
     }
 }
