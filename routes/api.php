@@ -2,6 +2,7 @@
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Video\VideoController;
 use App\Http\Controllers\Channel\ChannelController;
 use App\Http\Controllers\Category\CategoryController;
 
@@ -48,6 +49,20 @@ Route::middleware(['api'])
         Route::get('/channels/{channel}',
             [
                 ChannelController::class,
+                'show',
+            ]
+        );
+
+        Route::get('/videos',
+            [
+                VideoController::class,
+                'index',
+            ]
+        );
+
+        Route::get('/videos/{video}',
+            [
+                VideoController::class,
                 'show',
             ]
         );
