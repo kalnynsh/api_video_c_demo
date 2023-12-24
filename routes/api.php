@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Video\VideoController;
 use App\Http\Controllers\Channel\ChannelController;
 use App\Http\Controllers\Category\CategoryController;
@@ -25,6 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['api'])
     ->prefix('/api/v1')
     ->group(function () {
+        Route::get('/users',
+            [
+                UserController::class,
+                'index',
+            ]
+        );
+
+        Route::get('/users/{user}',
+            [
+                UserController::class,
+                'show',
+            ]
+        );
+
         Route::get('/categories',
             [
                 CategoryController::class,
