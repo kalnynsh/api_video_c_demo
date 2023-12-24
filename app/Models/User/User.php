@@ -2,9 +2,10 @@
 
 namespace App\Models\User;
 
+use App\Models\Channel\Channel;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -41,4 +42,9 @@ class User extends Authenticatable
         'password' => 'hashed',
         'email_verified_at' => 'datetime',
     ];
+
+    public function channel()
+    {
+        return $this->hasOne(Channel::class, 'user_id', 'id');
+    }
 }
