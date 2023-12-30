@@ -10,13 +10,14 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $content = Category::get();
+        $content = Category::with(['videos'])
+            ->get();
 
         return response($content, 200);
     }
 
     public function show(Category $category)
     {
-        return response($category, 200);
+        return response($category->load('videos'), 200);
     }
 }
