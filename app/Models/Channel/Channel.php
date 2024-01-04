@@ -4,10 +4,13 @@ namespace App\Models\Channel;
 
 use App\Models\User\User;
 use App\Models\Video\Video;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Channel extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
         'name',
     ];
